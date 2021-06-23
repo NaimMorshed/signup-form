@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import './SignUp.css';
 import google from '../../assets/google.png';
 import facebook from '../../assets/facebook.png';
 import email from '../../assets/email.png';
@@ -9,7 +8,7 @@ import { UserContext } from '../../App';
 import { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
 
-const SignUp = () => {
+const SignIn = () => {
     // eslint-disable-next-line no-unused-vars
     const [authentication, setAuthentication] = useContext(UserContext);
     const emailRef = useRef(null);
@@ -21,7 +20,7 @@ const SignUp = () => {
 
     const emailSignIn = event => {
         event.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(emailRef.current.value, passRef.current.value)
+        firebase.auth().signInWithEmailAndPassword(emailRef.current.value, passRef.current.value)
             .then(userCredential => {
                 const user = userCredential.user;
                 setAuthentication({
@@ -60,8 +59,8 @@ const SignUp = () => {
         <div className="App">
             <main className="App-header login-background">
                 <div className="parent">
-                    <h4>SIGN UP</h4>
-                    <p><small className="blur-text mb-5">Get access to the website by signing up</small></p>
+                    <h4>SIGN IN</h4>
+                    <p><small className="blur-text mb-5">Get access to the website by signing in</small></p>
                     <form onSubmit={emailSignIn} className="login-form">
                         <div className="input-div">
                             <img src={email} alt="" />
@@ -71,10 +70,10 @@ const SignUp = () => {
                             <img src={key} alt="" />
                             <input ref={passRef} className="left-padding" type="password" placeholder="Password" required />
                         </div>
-                        <input className="btn btn-primary" type="submit" value="Sign Up" />
+                        <input className="btn btn-primary" type="submit" value="Sign In" />
                         <span className="forget-password">Forget password?</span>
                     </form>
-                    <p><small onClick={() => history.push('/signIn')} className="account-text">I have an account</small></p>
+                    <p><small onClick={() => history.push('/signup')} className="account-text">I don't have an account</small></p>
                     <div className="social-media mt-3">
                         <img onClick={googleSignIn} className="logo" src={google} alt="" />
                         <img onClick={facebookSignIn} className="logo" src={facebook} alt="" />
@@ -85,6 +84,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
-
-//43.6 Module
+export default SignIn;

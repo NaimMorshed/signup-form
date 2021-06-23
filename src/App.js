@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createContext } from 'react';
 import { useState } from 'react';
+import SignIn from './components/SignIn/SignIn';
 export const UserContext = createContext();
 
 const App = () => {
@@ -22,6 +23,10 @@ const App = () => {
 
           <Route exact path="/">
             <SignUp />
+          </Route>
+
+          <Route path="/signIn">
+            <SignIn />
           </Route>
 
           <PrivateRoute path="/profile">
