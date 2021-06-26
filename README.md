@@ -1,4 +1,4 @@
-Project Name: Simple Signup form
+# Project Name: Simple Signup form
 Technology used: ReactJs
 Authenticated with Firebase. (Phone, email, google)
-Deployed at: 
+Deployed at firebase, link: https://signup-form-df968.web.app/
